@@ -52,7 +52,7 @@ const TaskLists = ({ data }) => {
     const [notify, setNotify] = useState({ isOpen: false, message: '', type: '' })
     const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, title: '', subTitle: '' })
     const [openEditDialog, setOpenEditDialog] = useState({ isOpen: false })
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
 
 
     const deleteTask = (taskId) => {
