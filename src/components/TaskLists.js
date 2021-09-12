@@ -8,6 +8,7 @@ import ConfirmDialog from './ConfirmDialog';
 import PopUp from './PopUp';
 import AddTaskForm from './AddTaskForm';
 import EditTaskForm from './EditTaskForm';
+import Spinner from './Spinner';
 import { dashboardData } from '../actions'
 import { useDispatch } from 'react-redux'
 import RestResource from '../services/DataService';
@@ -51,9 +52,11 @@ const TaskLists = ({ data }) => {
     const [notify, setNotify] = useState({ isOpen: false, message: '', type: '' })
     const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, title: '', subTitle: '' })
     const [openEditDialog, setOpenEditDialog] = useState({ isOpen: false })
+    const [loading, setLoading] = useState(true)
 
 
     const deleteTask = (taskId) => {
+        setLoading(true)
         setConfirmDialog({
             ...confirmDialog,
             isOpen: false
@@ -68,9 +71,11 @@ const TaskLists = ({ data }) => {
                 })
             })
         })
+        setLoading(false)
     }
 
     const handleToggle = (value) => () => {
+        setLoading(true)
         let toUpdate = value.completed == true ? false : true
         service.changeTaskStatus({ id: value._id, toUpdate }).then(res => {
             service.getDashboardData().then(res => {
@@ -82,10 +87,14 @@ const TaskLists = ({ data }) => {
                 })
             })
         })
+        setLoading(false)
     };
 
     return (
         <div>
+            <div style={{justifyContent: 'center'}}>
+            <Spinner loading={loading} />
+            </div>
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <TextField
                     style={{ marginBottom: '10px', borderRadius: '20px' }}
