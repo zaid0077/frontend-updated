@@ -1,5 +1,4 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
 import { Dialog, DialogContent, DialogTitle, Typography, Button } from '@material-ui/core'
 
 export default function PopUp({ openPopup, setOpenPopup, title, children }) {

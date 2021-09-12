@@ -26,7 +26,6 @@ export default function AddTaskForm(props) {
     const [values, setValues] = useState(initialValue)
     const [notify, setNotify] = useState({ isOpen: false, message: '', type: '' })
     const [error, setError] = useState({})
-    const classes = useStyle()
     const dispatch = useDispatch();
 
     const handleInputChange = e => {

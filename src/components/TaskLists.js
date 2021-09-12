@@ -9,9 +9,8 @@ import PopUp from './PopUp';
 import AddTaskForm from './AddTaskForm';
 import EditTaskForm from './EditTaskForm';
 import { dashboardData } from '../actions'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import RestResource from '../services/DataService';
-import { TurnedInNotOutlined } from '@material-ui/icons';
 const service = new RestResource();
 
 
